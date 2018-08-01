@@ -191,7 +191,7 @@ set background=dark
 colorscheme gruvbox
 " }}}
 " Auto Comands {{{
-autocmd Syntax ruby,javascript normal zR
+" autocmd Syntax ruby,javascript normal zR
 " }}}
 " Custom Functions {{{
 function! ExecuteMacroOverVisualRange()
