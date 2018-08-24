@@ -129,6 +129,11 @@ let g:ale_sign_warning = '.'
 let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always = 1
 " }}}
+Plug 'kana/vim-textobj-user'             " Custom text objects
+Plug 'nelstrom/vim-textobj-rubyblock'    " Ruby block object
+" {{{
+runtime macros/matchit.vim
+" }}}
 Plug 'tpope/vim-rails'                   " Rails
 Plug 'tpope/vim-endwise'                 " Ends for Ruby
 Plug 'tpope/vim-surround'                " Wrap things
