@@ -41,6 +41,9 @@ nmap <leader>f za
 " Edit and source vimrc
 nnoremap <leader><space>ev :vsp $MYVIMRC<CR>
 nnoremap <leader><space>sv :source $MYVIMRC<CR>
+nnoremap <leader>O :call Gimme("O")<CR>
+nnoremap <leader>o :call Gimme("o")<CR>
+nnoremap <leader>i :call Gimme("i")<CR>
 " }}}
 " Key Mapping {{{
 " Line Shortcuts
@@ -197,11 +200,28 @@ colorscheme gruvbox
 " }}}
 " Auto Comands {{{
 " autocmd Syntax ruby,javascript normal zR
+au BufRead * normal zR
 " }}}
 " Custom Functions {{{
 function! ExecuteMacroOverVisualRange()
   echo "@".getcmdline()
   execute ":'<,'>normal @".nr2char(getchar())
+endfunction
+
+function! Gimme(where)
+  call inputsave()
+  let command = input("Gimme what? ")
+  if command == "log"
+    execute "normal " . a:where . "console.log()"
+    normal l
+    startinsert
+  elseif command == "import"
+    execute "normal " . a:where . "import {  } from ''"
+    normal BBh
+    startinsert
+  elseif command == "debug"
+    execute "normal " . a:where . "debugger; // eslint-disable-line"
+  endif
 endfunction
 " }}}
 
